@@ -19,8 +19,7 @@ using namespace std;
 //  [구조체 Node]
 //  설명: 데이터 한 덩어리를 나타냄 (Linked List의 알맹이)
 //  C언어와 달리 생서자 (Node(...))를 넣어 초기화를 편하게함
-struct Node
-{
+struct Node {
     string key;     //  key (검색 키)
     string value;   //  value (실제 값)
     Node* next;     //  다음 노드의 주소를 가리키는 포인터 (충돌 시 연결용)

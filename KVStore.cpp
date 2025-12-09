@@ -42,3 +42,24 @@ KVStore::~KVStore() {
 }
 
 //  [Put 구현]
+void KVStore::put(string key, string value) {
+    int index = hashFunction(key);
+    Node* newNode = new Node(key, value);
+
+    if(table[index] == nullptr) {
+        table[index] == newNode;
+    }
+    else {
+        Node* current = table[index];
+        while (current != nullptr) {
+            if(current->key == key){
+                current->value = value;
+                delete newNode;
+                return;
+            }
+            if(current->next == nullptr) break;
+            current = current->next;
+        }
+        current->next = newNode;
+    }
+}
