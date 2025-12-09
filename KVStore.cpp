@@ -63,3 +63,41 @@ void KVStore::put(string key, string value) {
         current->next = newNode;
     }
 }
+
+//  [Get 구현]
+string KVStore::get(string key) {
+    int index = hashFunction(key);
+    Node* current = table[index];
+
+    while (current != nullptr) {
+        if(current->key == key) {
+            return current->value;
+        }
+        current = current->next;
+    }
+    return "";
+}
+
+//  [Remove 구현]
+void KVStore::remove(string key) {
+    int index = hashFunction(key);
+    Node* current = table[index];
+    Node* prev = nullptr;
+
+    while (current != nullptr) {
+        if(current->key == key) {
+            if(prev == nullptr) {
+                table[index] = current->next;
+            }
+            else {
+                prev->next = current->next;
+            }
+            delete current;
+            cout << "[Info] 삭제 완료: " << key << endl;
+            return;
+        }
+        prev = current;
+        current = current->next;
+    }
+    cout << "[ERROR] key 없음: " << key << endl;
+}
