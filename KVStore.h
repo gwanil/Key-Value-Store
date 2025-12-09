@@ -34,19 +34,24 @@ struct Node
 //  설명: 데이터 저장소의 '설계도'
 class KVStore {
     private:
-        int capacity;
-        Node** table;
+        //  [캡슐화] 외부에서 db, table처럼 함부로 접근 못하게 막음
+        int capacity;   //  저장소의 전체 크기 (버킷 수)
+        Node** table;   //  [이중 포인터] Node 포인터들의 배열을 가르키는 변수
 
+        //  [내부 함수] 해시 함수는 내부에서만 쓰임 (private)
         int hashFunction(string key);
 
     public:
+        //  [생성자] 클래스가 만들어질 때(초기화) 호출
         KVStore(int size);
+        //  [소멸자] 클래스가 사라질 때(메모리 해제) 호출
         ~KVStore();
 
-        void put(string key, string value);
-        string get(string key);
-        void remove(string key);
+        //  [공개 함수] 외부(main)에서 사용할 기능들
+        void put(string key, string value);     // 저장/수정
+        string get(string key);                 // 조회
+        void remove(string key);                // 삭제
 
 };
 
-#endif  // 3. "if문의 끝 (1 세트)"
+#endif  //   3. "if문의 끝 (1 세트)"
