@@ -40,6 +40,9 @@ class KVStore {
         //  [내부 함수] 해시 함수는 내부에서만 쓰임 (private)
         int hashFunction(string key);
 
+        //  추가
+        Node* findNode(string key);
+
     public:
         //  [생성자] 클래스가 만들어질 때(초기화) 호출
         KVStore(int size);
