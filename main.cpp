@@ -46,15 +46,15 @@ int main() {
         if(cmd == "PUT") {
             ss >> value;
             db.put(key, value);
-            cout << "[CMD] PUT" << key << " = " << value << endl;
+            cout << "[CMD] PUT " << key << " = " << value << endl;
         }
         else if(cmd == "GET") {
             string res = db.get(key);
-            cout << "[CMD] GET" << key << " -> 결과: " << (res == ""?"(없음)":res) << endl;
+            cout << "[CMD] GET " << key << " -> 결과: " << (res == ""?"(없음)":res) << endl;
         }
         else if(cmd == "REMOVE") {
             db.remove(key);
-            cout << "[CMD] REMOVE" << key << endl;
+            cout << "[CMD] REMOVE " << key << endl;
         }
     }
 
