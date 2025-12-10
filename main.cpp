@@ -60,5 +60,8 @@ int main() {
 
     file.close();
     cout << "---모든 작업 완료---" << endl;
+
+    db.printAll();
+    
     return 0;
 }

@@ -41,7 +41,7 @@ class KVStore {
         int hashFunction(string key);
 
         //  추가
-        Node* findNode(string key);
+       // Node* findNode(string key);
 
     public:
         //  [생성자] 클래스가 만들어질 때(초기화) 호출
@@ -53,6 +53,9 @@ class KVStore {
         void put(string key, string value);     // 저장/수정
         string get(string key);                 // 조회
         void remove(string key);                // 삭제
+
+        //  [추가] 현재 저장소에 있는 모든 데이터를 조회
+        void printAll();
 
 };
 

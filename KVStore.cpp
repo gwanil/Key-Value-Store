@@ -101,3 +101,33 @@ void KVStore::remove(string key) {
     }
     cout << "[ERROR] key 없음: " << key << endl;
 }
+
+void KVStore::printAll() {
+    cout << "\n=== [최종 저장소 상태 Dump] ===" << endl;
+
+    bool isEmpty = true;
+
+    for (int i = 0; i < capacity; i++) {
+        Node* current = table[i];
+
+        if(current != nullptr) {
+            isEmpty = false;
+            cout << "Bucket [ " << i << "] : ";
+
+            while (current != nullptr) {
+                cout << "{" << current->key << " : " << current->value << "}";
+
+                if (current->next != nullptr) {
+                    cout << " -> ";
+                }
+                current = current->next;
+            }
+            cout << endl;
+        }
+    }
+
+    if (isEmpty) {
+        cout << "(비어있음)" << endl;
+    }
+    cout << "=====================================\n" << endl;
+}
