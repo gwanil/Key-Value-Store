@@ -47,7 +47,7 @@ void KVStore::put(string key, string value) {
     Node* newNode = new Node(key, value);
 
     if(table[index] == nullptr) {
-        table[index] == newNode;
+        table[index] = newNode;
     }
     else {
         Node* current = table[index];
