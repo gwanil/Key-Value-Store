@@ -1,0 +1,7 @@
+PUT apple 사과
+PUT banana 바나나
+PUT computer 컴퓨터
+GET apple
+GET banana
+REMOVE apple
+GET apple
