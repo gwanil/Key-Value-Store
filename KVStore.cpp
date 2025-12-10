@@ -112,7 +112,7 @@ void KVStore::printAll() {
 
         if(current != nullptr) {
             isEmpty = false;
-            cout << "Bucket [ " << i << "] : ";
+            cout << "Bucket [" << i << "] : ";
 
             while (current != nullptr) {
                 cout << "{" << current->key << " : " << current->value << "}";
