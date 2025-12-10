@@ -1,0 +1,9 @@
+# 컴파일된 목적 파일 무시
+*.o
+
+# 실행 파일 무시 (윈도우면 main.exe, 리눅스면 main)
+main
+main.exe
+
+# VS Code 설정 폴더 무시
+.vscode/
