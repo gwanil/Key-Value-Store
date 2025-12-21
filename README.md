@@ -25,10 +25,10 @@ Redis의 아키텍처를 모티브로 하여 C++로 직접 구현하였으며, `
 
 ```mermaid
 graph LR
-    A[User / Client] -->|Command (PUT/GET)| B("Query Processor")
-    B -->|Operation| C{"KV Engine (Hash Map)"}
-    C -->|Read/Write| D[RAM (Memory)]
-    C -->|Flush/Load| E[Disk (File System)]
+    A["User / Client"] -->|Command (PUT/GET)| B("Query Processor")
+    B -->|"Operation"| C{"KV Engine (Hash Map)"}
+    C -->|"Read/Write"| D[RAM ("Memory")]
+    C -->|"Flush/Load"| E[Disk ("File System")]
 
 ```
 
