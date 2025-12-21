@@ -1,28 +1,26 @@
-# 컴파일러 설정 (g++)
+# 컴파일러 설정 (C++은 g++)
 CXX = g++
-# 컴파일 옵션 (-Wall: 경고 켜기, -g: 디버깅 정보 포함), -I include : "헤더 파일은 include 폴더에서 찾아라"
-CXXFLAGS = -Wall -g -I include
+CXXFLAGS = -Wall -std=c++14 -Iinclude  # -Iinclude: 헤더 파일 위치 지정
 
-# 실행 파일 이름
-TARGET = main
-
-# 소스 파일들 (여기에 .cpp 파일 다 적으면 됨)
+# 소스 파일과 객체 파일 정의
 SRCS = src/main.cpp src/KVStore.cpp
+OBJS = $(SRCS:src/%.cpp=obj/%.o)
+TARGET = kv_engine
 
-# 목적 파일들 (.cpp -> src/main.o)
-OBJS = $(SRCS:.cpp=.o)
-
-# 1. 'make' 치면 실행되는 기본 규칙
+# 기본 타겟
 all: $(TARGET)
 
-# 2. 실행 파일 만드는 규칙 (링킹)
+# 실행 파일 생성 규칙
 $(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+	$(CXX) -o $@ $^
+	@echo "Build Complete! Run: ./$(TARGET)"
 
-# 3. .cpp를 .o로 만드는 규칙 (컴파일)
-%.o: %.cpp
+# 객체 파일(.o) 생성 규칙 (src/*.cpp -> obj/*.o)
+obj/%.o: src/%.cpp
+	@mkdir -p obj
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# 4. 'make clean' 치면 청소하는 규칙
+# 청소 규칙 (make clean)
 clean:
-	rm -f src/*.o $(TARGET)
+	rm -f obj/*.o $(TARGET)
+	rm -rf obj
